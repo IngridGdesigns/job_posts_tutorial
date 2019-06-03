@@ -4,10 +4,13 @@ import TableBody from './TableBody'
 
 class Table extends Component {
     render() {
+
+        const { characterData } = this.props
+        //passing props from app to table => table body
         return (
             <table>
                 <TableHeader/>
-                <TableBody />
+                <TableBody characterData={characterData}/> 
             </table>
            
         )
