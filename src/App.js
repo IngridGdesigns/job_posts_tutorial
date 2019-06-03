@@ -3,7 +3,7 @@ import Table from './Table'
 
 class App extends Component {
     state = {
-        characters = [
+        characters: [
             {
                 name: 'Lisa',
                 job: 'Concierge',
@@ -21,28 +21,29 @@ class App extends Component {
                 job: 'Graphic Designer',
             }
         ],
+        //this.deleteCharacter = this.deleteCharacter.bind(this)
     }
+
+    deleteCharacter = (index) => {
+        const {characters} = this.state;
+
+        this.setState({
+            characters: characters.filter((character, i) => {
+                return i !== index;
+        }),
+    })
+}
 
     render() {
 
-    const { characters} = this.state
+    const { characters } = this.state
 
-        removeCharacter = index => {
-            const {characters} = this.state
-
-            this.setState({
-                characters: characters.filter((character, i) => {
-                    return i !== index
-                }),
-            })
-        }
 
         return (
-            
+          
             <div className='container'>
-                <Table characterData={characters}
-                        removeCharacter={this.removeCharacter}
-                />
+                <Table characterData={characters} 
+                deleteCharacter={this.deleteCharacter}/>
             </div>
         )
     }
